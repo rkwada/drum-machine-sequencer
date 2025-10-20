@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/tone@latest/build/Tone.js"></script>
+    <script src="js/main.js" defer></script>
+
+    <title>Drum Machine</title>
+</head>
+
+<body>
+    <header>
+        <h1>Drum Sequencer</h1>
+    </header>
+    <main>
+        <div class="controls">
+            <div class="bpm-input">
+                <label for="bpm"> <span class="bpm-value">120</span> BPM</label>
+                <input type="range" id="bpm" min="60" max="240" value="120">
+            </div>
+            <button id="play">Play</button>
+            <button id="stop">Stop</button>
+        </div>
+        <div>
+            <div class="sequencer">
+                <div class="note"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Designed by Rikuo Wada</p>
+    </footer>
+</body>
+
+</html>
