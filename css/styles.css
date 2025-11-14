@@ -1,4 +1,5 @@
 body {
+    font-family: 'Stack Sans Text', sans-serif;
     padding: 1rem;
     background: #222;
     margin: 0 auto;
@@ -94,4 +95,13 @@ body {
 
 .live {
     background: greenyellow;
+}
+/* Typography */
+header, footer {
+    padding: 0 15rem 0 15rem;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: 1rem;
 }

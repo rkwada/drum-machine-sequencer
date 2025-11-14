@@ -1,4 +1,3 @@
-// let notes = Array(128).fill("");
 let bpm = 120;
 let beat = 0;
 let playing = false;
