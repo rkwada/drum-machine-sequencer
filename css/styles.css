@@ -1,7 +1,7 @@
 body {
-    font-family: 'Stack Sans Text', sans-serif;
+    font-family: "Raleway", sans-serif; 
     padding: 1rem;
-    background: #222;
+    background: #13234f;
     margin: 0 auto;
     display: grid;
     min-width: 320px;
@@ -94,7 +94,25 @@ body {
 }
 
 .live {
-    background: greenyellow;
+    background: #ff2e51;
+}
+
+#play {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#stop {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 /* Typography */
 header, footer {
