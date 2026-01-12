@@ -8,7 +8,7 @@ const bpmValue = document.querySelector(".bpm-value");
 const playButton = document.getElementById("play");
 const stopButton = document.getElementById("stop");
 
-
+// Drum samples
 const drums = {
     kick: new Tone.Player("audio/MPC_BD.WAV").toDestination(),
     snare: new Tone.Player("audio/MPC_SN.WAV").toDestination(),
@@ -26,6 +26,7 @@ const drumLabels = ["Kick", "Snare", "Open Hat", "Closed Hat", "Hi Tom", "Low To
 
 let rows = drumSet.map(noteName => Array.from({ length: 16 }, () => ({ noteName, active: false })));
 
+// Indicator lights on top of sequencer
 const indicatorRow = document.createElement("div");
 indicatorRow.className = "indicator-row";
 sequencer.appendChild(indicatorRow);
@@ -37,8 +38,8 @@ const indicators = Array.from({ length: 16 }, () => {
     return dot;
 });
 
+// Looping 
 Tone.Transport.scheduleRepeat(time => {
-
     indicators.forEach(ind => ind.classList.remove("live"));
     indicators[beat].classList.add("live");
 
@@ -51,12 +52,14 @@ Tone.Transport.scheduleRepeat(time => {
     beat = (beat + 1) % 16;
 }, "16n");
 
+// Note click handler
 const noteClick = (rowIndex, noteIndex, button) => {
     const col = rows[rowIndex][noteIndex];
     col.active = !col.active;
     button.classList.toggle("active", col.active);
 };
 
+// Play and stop button handlers
 const playClick = async () => {
     if (!playing) await Tone.start();
     Tone.Transport.bpm.value = bpm;
@@ -70,9 +73,11 @@ const stopClick = () => {
     playing = false;
 }
 
+// Play and stop buttons
 playButton.addEventListener("click", playClick);
 stopButton.addEventListener("click", stopClick);
 
+// Spacebar to play and stop
 document.addEventListener("keydown", (event) => {
     if (event.code === 'Space') {
         event.preventDefault();
@@ -84,12 +89,14 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+// Bpm input handler
 bpmInput.addEventListener("input", () => {
     bpm = +bpmInput.value;
     bpmValue.textContent = bpm;
     if (playing) Tone.Transport.bpm.value = bpm;
 });
 
+// Sequencer build
 sequencer.innerHTML = "";
 sequencer.prepend(indicatorRow);
 
