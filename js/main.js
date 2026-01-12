@@ -113,12 +113,15 @@ rows.forEach((row, i) => {
     buttonsDiv.className = "row-buttons";
 
     const volumeSlider = document.createElement("input");
-    volumeSlider.type = "range";
+    volumeSlider.type = "range"; 
     volumeSlider.min = -60;
     volumeSlider.max = 1;
     volumeSlider.step = 1;
-    volumeSlider.value = -12;
+    volumeSlider.value = 12;
     volumeSlider.className = "volume-slider";
+    volumeSlider.addEventListener("input", () => {
+        drums[drumSet[i]].volume.value = +volumeSlider.value;
+    });
 
     row.forEach((step, j) => {
         const button = document.createElement("button");

@@ -78,7 +78,7 @@ body {
     grid-template-columns: repeat(16, 50px);
     grid-gap: 5px;
     margin: 0 0 5px 4rem;
-    padding-right: 165px;
+    padding-right: 177px;
 }
 
 .indicator {
