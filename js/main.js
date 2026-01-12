@@ -18,7 +18,7 @@ const drums = {
     lowtom: new Tone.Player("audio/MPC_LTOM.WAV").toDestination(),
     crash: new Tone.Player("audio/MPC_CRAS.WAV").toDestination(),
     ride: new Tone.Player("audio/MPC_RIDE.WAV").toDestination()
-};  
+};
 
 const drumSet = ["kick", "snare", "openhat", "closehat", "hitom", "lowtom", "crash", "ride"];
 
@@ -112,6 +112,14 @@ rows.forEach((row, i) => {
     const buttonsDiv = document.createElement("div");
     buttonsDiv.className = "row-buttons";
 
+    const volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = -60;
+    volumeSlider.max = 1;
+    volumeSlider.step = 1;
+    volumeSlider.value = -12;
+    volumeSlider.className = "volume-slider";
+
     row.forEach((step, j) => {
         const button = document.createElement("button");
         button.className = "note";
@@ -124,7 +132,8 @@ rows.forEach((row, i) => {
         buttonsDiv.appendChild(button);
     });
 
-    rowDiv.appendChild(buttonsDiv);
+    rowDiv.appendChild(buttonsDiv); 
     sequencer.appendChild(rowDiv);
+    rowDiv.appendChild(volumeSlider);  
 });
 
