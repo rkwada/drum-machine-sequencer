@@ -78,6 +78,7 @@ body {
     grid-template-columns: repeat(16, 50px);
     grid-gap: 5px;
     margin: 0 0 5px 4rem;
+    padding-right: 177px;
 }
 
 .indicator {
@@ -86,8 +87,8 @@ body {
     border-radius: 50%;
     background: #555;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+        align-items: center;
     color: #fff;
     font-size: 1.5rem;
     margin: 0 auto;
@@ -122,4 +123,8 @@ header, footer {
 h1 {
     font-size: 4rem;
     margin-top: 1rem;
+}
+
+.volume-slider {
+    margin-left: 1rem;
 }
