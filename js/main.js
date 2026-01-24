@@ -113,7 +113,7 @@ rows.forEach((row, i) => {
     buttonsDiv.className = "row-buttons";
 
     const volumeSlider = document.createElement("input");
-    volumeSlider.type = "range"; 
+    volumeSlider.type = "range";
     volumeSlider.min = -60;
     volumeSlider.max = 1;
     volumeSlider.step = 1;
@@ -123,11 +123,17 @@ rows.forEach((row, i) => {
         drums[drumSet[i]].volume.value = +volumeSlider.value;
     });
 
-    const reverb = new Tone.Reverb({ 
-        decay: 5, 
-        wet: 0.5 
+    const reverb = new Tone.Reverb({
+        decay: 5,
+        wet: 0.5
     }).toDestination();
     drums[drumSet[i]].connect(reverb);
+
+    const delay = new Tone.FeedbackDelay({
+        delayTime: "16n",
+        feedback: 0.5,
+    }).toDestination();
+    drums[drumSet[i]].connect(delay);
 
     row.forEach((step, j) => {
         const button = document.createElement("button");
@@ -141,8 +147,8 @@ rows.forEach((row, i) => {
         buttonsDiv.appendChild(button);
     });
 
-    rowDiv.appendChild(buttonsDiv); 
+    rowDiv.appendChild(buttonsDiv);
     sequencer.appendChild(rowDiv);
-    rowDiv.appendChild(volumeSlider);  
+    rowDiv.appendChild(volumeSlider);
 });
 
