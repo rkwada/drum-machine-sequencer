@@ -123,6 +123,12 @@ rows.forEach((row, i) => {
         drums[drumSet[i]].volume.value = +volumeSlider.value;
     });
 
+    const reverb = new Tone.Reverb({ 
+        decay: 5, 
+        wet: 0.5 
+    }).toDestination();
+    drums[drumSet[i]].connect(reverb);
+
     row.forEach((step, j) => {
         const button = document.createElement("button");
         button.className = "note";
