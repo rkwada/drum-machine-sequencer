@@ -123,17 +123,25 @@ rows.forEach((row, i) => {
         drums[drumSet[i]].volume.value = +volumeSlider.value;
     });
 
+    // Reverb
     const reverb = new Tone.Reverb({
         decay: 5,
         wet: 0.5
     }).toDestination();
     drums[drumSet[i]].connect(reverb);
 
+    const reverbSelector = document.createElement("input");
+    reverbSelector.type = "checkbox";
+
+    // Delay
     const delay = new Tone.FeedbackDelay({
         delayTime: "16n",
         feedback: 0.5,
     }).toDestination();
     drums[drumSet[i]].connect(delay);
+
+    const delaySelector = document.createElement("input");
+    delaySelector.type = "checkbox";
 
     row.forEach((step, j) => {
         const button = document.createElement("button");
