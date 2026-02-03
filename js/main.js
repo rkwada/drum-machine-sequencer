@@ -20,6 +20,17 @@ const drums = {
     ride: new Tone.Player("audio/MPC_RIDE.WAV").toDestination()
 };
 
+const drums909 = {
+    kick: new Tone.Player("audio/909_BD1.WAV").toDestination(),
+    snare: new Tone.Player("audio/909_SN1.WAV").toDestination(),
+    openhat: new Tone.Player("audio/909_HHCL.WAV").toDestination(),
+    closehat: new Tone.Player("audio/909_HHOP.WAV").toDestination(),
+    hitom: new Tone.Player("audio/909_TOM1.WAV").toDestination(),
+    lowtom: new Tone.Player("audio/909_TOM2.WAV").toDestination(),
+    crash: new Tone.Player("audio/909_CRAS.WAV").toDestination(),
+    ride: new Tone.Player("audio/909_RIDE.WAV").toDestination()
+}
+
 const drumSet = ["kick", "snare", "openhat", "closehat", "hitom", "lowtom", "crash", "ride"];
 
 const drumLabels = ["Kick", "Snare", "Open Hat", "Closed Hat", "Hi Tom", "Low Tom", "Crash", "Ride"];
@@ -113,7 +124,7 @@ rows.forEach((row, i) => {
     buttonsDiv.className = "row-buttons";
 
     const volumeSlider = document.createElement("input");
-    volumeSlider.type = "range"; 
+    volumeSlider.type = "range";
     volumeSlider.min = -60;
     volumeSlider.max = 1;
     volumeSlider.step = 1;
@@ -122,6 +133,26 @@ rows.forEach((row, i) => {
     volumeSlider.addEventListener("input", () => {
         drums[drumSet[i]].volume.value = +volumeSlider.value;
     });
+
+    // Reverb
+    const reverb = new Tone.Reverb({
+        decay: 5,
+        wet: 0.5
+    }).toDestination();
+    drums[drumSet[i]].connect(reverb);
+
+    const reverbSelector = document.createElement("input");
+    reverbSelector.type = "checkbox";
+
+    // Delay
+    const delay = new Tone.FeedbackDelay({
+        delayTime: "16n",
+        feedback: 0.5,
+    }).toDestination();
+    drums[drumSet[i]].connect(delay);
+
+    const delaySelector = document.createElement("input");
+    delaySelector.type = "checkbox";
 
     row.forEach((step, j) => {
         const button = document.createElement("button");
@@ -135,8 +166,8 @@ rows.forEach((row, i) => {
         buttonsDiv.appendChild(button);
     });
 
-    rowDiv.appendChild(buttonsDiv); 
+    rowDiv.appendChild(buttonsDiv);
     sequencer.appendChild(rowDiv);
-    rowDiv.appendChild(volumeSlider);  
+    rowDiv.appendChild(volumeSlider);
 });
 
