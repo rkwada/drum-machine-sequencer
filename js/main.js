@@ -20,6 +20,17 @@ const drums = {
     ride: new Tone.Player("audio/MPC_RIDE.WAV").toDestination()
 };
 
+const drums909 = {
+    kick: new Tone.Player("audio/909_BD1.WAV").toDestination(),
+    snare: new Tone.Player("audio/909_SN1.WAV").toDestination(),
+    openhat: new Tone.Player("audio/909_HHCL.WAV").toDestination(),
+    closehat: new Tone.Player("audio/909_HHOP.WAV").toDestination(),
+    hitom: new Tone.Player("audio/909_TOM1.WAV").toDestination(),
+    lowtom: new Tone.Player("audio/909_TOM2.WAV").toDestination(),
+    crash: new Tone.Player("audio/909_CRAS.WAV").toDestination(),
+    ride: new Tone.Player("audio/909_RIDE.WAV").toDestination()
+}
+
 const drumSet = ["kick", "snare", "openhat", "closehat", "hitom", "lowtom", "crash", "ride"];
 
 const drumLabels = ["Kick", "Snare", "Open Hat", "Closed Hat", "Hi Tom", "Low Tom", "Crash", "Ride"];
