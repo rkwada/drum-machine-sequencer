@@ -139,20 +139,31 @@ rows.forEach((row, i) => {
         decay: 5,
         wet: 0.5
     }).toDestination();
-    drums[drumSet[i]].connect(reverb);
 
-    const reverbSelector = document.createElement("input");
-    reverbSelector.type = "checkbox";
+    const reverbCheckbox = document.getElementById("reverb");
+    reverbCheckbox.addEventListener("change", () => {
+        if (reverbCheckbox.checked) {
+            drums[drumSet[i]].connect(reverb);
+        } else {
+            drums[drumSet[i]].disconnect(reverb);
+            drums[drumSet[i]].toDestination();
+        }
+    });
 
     // Delay
     const delay = new Tone.FeedbackDelay({
         delayTime: "16n",
         feedback: 0.5,
     }).toDestination();
-    drums[drumSet[i]].connect(delay);
 
-    const delaySelector = document.createElement("input");
-    delaySelector.type = "checkbox";
+    const delayCheckbox = document.getElementById("delay");
+    delayCheckbox.addEventListener("change", () => {
+        if (delayCheckbox.checked) {
+            drums[drumSet[i]].connect(delay);
+        } else {
+            drums[drumSet[i]].disconnect(delay);
+        }
+    });
 
     row.forEach((step, j) => {
         const button = document.createElement("button");
